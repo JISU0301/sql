@@ -45,8 +45,8 @@ where to_date like '9999%';
 -- 문제 7
 -- 전체 부서를 출력하려고 합니다. 순서는 부서이름이 긴 순서대로 출력해 보세요.
 select dept_name, length(dept_name) as '부서 길이'
-	from departments;
-    
+	from departments
+order by length(dept_name) desc;
 
 -- 문제 8
 -- 현재 급여가 120,000이상 받는 사원은 몇 명이나 있습니까?
@@ -57,7 +57,8 @@ where salary >= 120000;
 -- 문제 9
 -- 어떤 직책들이 있나요? 중복 없이 이름이 긴 순서대로 출력해 보세요.
 select distinct title, length(title) as '직책 길이'
-	from titles;
+	from titles
+order by length(title) desc;
 
 -- 문제 10
 -- 현재 Enginner 직책의 사원은 총 몇 명입니까?
