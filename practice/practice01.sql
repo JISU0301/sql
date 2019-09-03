@@ -63,7 +63,9 @@ select distinct title, length(title) as '직책 길이'
 -- 현재 Enginner 직책의 사원은 총 몇 명입니까?
 select count(emp_no) as '사원 수'
 	from titles
-where title like 'enginner';
+where title like 'Engineer'
+and to_date like '9999%';
+-- select title from titles ;
 
 -- 문제 11
 -- 사번이 13250(Zeydy)인 지원이 직책 변경 상황을 시간순으로 출력해보세요.
