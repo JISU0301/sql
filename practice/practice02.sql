@@ -35,6 +35,7 @@ from salaries
 where to_date = '9999-01-01';
 
 -- 6. 최고 어린 사원의 나이와 최 연장자의 나이는?
-select period_diff(date_format(max(birth_date),'%Y'),
-date_format(min(birth_date),'%Y')) as '나이차'
-from employees;
+select  date_format(curdate(), '%Y') - date_format(min(birth_date),'%Y') as '최고연령자',
+date_format(curdate(), '%Y') - date_format(max(birth_date),'%Y') as '최소연령자'
+from employees; 
+

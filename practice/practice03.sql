@@ -13,8 +13,7 @@ concat(a.first_name, ' ', a.last_name) as '이름',
 b.title as '직책'
 from employees a, titles b
 where a.emp_no = b.emp_no
-and to_date = '9999-01-01'
-order by 이름;
+and to_date = '9999-01-01';
 
 -- 3. 전체 사원의 사번, 이름, 현재 부서를 이름 순서로 출력하세요..
 select a.emp_no as '사번',
@@ -22,8 +21,7 @@ concat(a.first_name, ' ', a.last_name) as '이름',
 b.dept_no as '부서'
 from employees a, dept_emp b
 where a.emp_no = b.emp_no
-and to_date = '9999-01-01'
-order by 이름;
+and to_date = '9999-01-01';
 
 -- 4. 전체 사원의 사번, 이름, 연봉, 직책, 부서를 모두 이름 순서로 출력합니다.
 select a.emp_no as '사번',
@@ -37,8 +35,7 @@ and b.emp_no = c.emp_no
 and c.emp_no = d.emp_no
 and b.to_date = '9999-01-01'
 and c.to_date = '9999-01-01'
-and d.to_date = '9999-01-01'
-order by 이름;
+and d.to_date = '9999-01-01';
 
 -- 5. ‘Technique Leader’의 직책으로 과거에 근무한 적이 있는 모든 사원의
 -- 사번과 이름을 출력하세요. (현재 ‘Technique Leader’의 직책(으로 근무하는
@@ -67,6 +64,8 @@ select a.title as '직책',
 b.salary as '급여'
 from titles a, salaries b
 where a.emp_no = b.emp_no
+and a.to_date = '9999-01-01'
+and b.to_date = '9999-01-01'
 and title = 'Engineer'
 and b.salary >= 40000
 order by b.salary desc;
@@ -78,7 +77,8 @@ from titles a, salaries b
 where a.emp_no = b.emp_no
 and a.to_date = '9999-01-01'
 and b.to_date = '9999-01-01'
-and b.salary > 50000
+group by a.title
+having b.salary > 50000
 order by b.salary desc;
 
 -- 9. 현재, 부서별 평균 연봉을 연봉이 큰 부서 순서대로 출력하세요.
@@ -97,6 +97,7 @@ select a.title as '직책',
 avg(b.salary) as '평균 연봉' 
 from titles a, salaries b
 where a.emp_no = b.emp_no
+and a.to_date = '9999-01-01'
 and b.to_date = '9999-01-01'
 group by a.title
 order by avg(b.salary) desc;
